@@ -22,7 +22,8 @@
 | 1 | Navigation & Folders | ✅ Done |
 | 2 | Copy, Move, Delete | ✅ Done |
 | 3 | File Viewing, Logs & grep | ✅ Done |
-| 4 | Coming soon... | ⏳ Next |
+| 4 | File Permissions | ✅ Done |
+| 5 | Coming soon... | ⏳ Next |
 
 > 📂 **Practice folder:** `~/cloud-lab` (WSL Ubuntu)
 
