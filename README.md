@@ -126,6 +126,81 @@ Logs ➜ Service ➜ Network ➜ DNS ➜ Port ➜ Credentials
 Check the logs with `grep` and `tail`, then verify the service, network, DNS, port and credentials before deciding the root cause.
 
 </details>
+---
+
+## 🔐 Day 4: File Permissions
+
+| Command | Syntax | What it does |
+|---|---|---|
+| 🙋 `whoami` | `whoami` | Shows the user running your current shell |
+| 🔎 `ls -l` | `ls -l file.txt` | Shows permissions, owner and group of a file |
+| 🔓 `chmod +x` | `chmod +x file` | Adds execute permission |
+| 👤 `chmod u+x` | `chmod u+x deploy.sh` | Adds execute permission for the owner only |
+| 🔢 `chmod 644` | `chmod 644 file` | Owner: read+write, group and others: read only |
+| 🔒 `chmod 600` | `chmod 600 file` | Only the owner can read and write |
+| 👑 `chown` | `sudo chown USER:GROUP file` | Changes the owner and group of a file |
+
+### 📖 Permission types
+
+| Symbol | Permission | On a file | On a directory |
+|:---:|---|---|---|
+| `r` | Read (4) | View contents | List entries |
+| `w` | Write (2) | Modify contents | Create, delete, rename entries |
+| `x` | Execute (1) | Run as a program/script | Enter (traverse) it |
+
+**Who gets permissions:** `u` = User (owner), `g` = Group, `o` = Others
+
+### 🧩 How to read `ls -l`
+
+```text
+-rw-r--r--  1  ekta  ekta  0  Oct 12  permissions-demo.txt
+│└┬┘└┬┘└┬┘
+│ │  │  └── Others: r--  (read only)
+│ │  └───── Group:  r--  (read only)
+│ └──────── Owner:  rw-  (read + write)
+└────────── File type (- = file, d = directory)
+```
+
+### 🔢 Numeric mode (add the values)
+
+| Number | Meaning | Calculation |
+|:---:|---|---|
+| 7 | rwx | 4+2+1 |
+| 6 | rw- | 4+2 |
+| 5 | r-x | 4+1 |
+| 4 | r-- | 4 |
+
+**Example:** `644` = owner `6` (rw-), group `4` (r--), others `4` (r--)
+
+> [!WARNING]
+> Don't fix every permission error with `chmod 777`. It gives everyone read, write and execute access and creates a security risk.
+
+> [!NOTE]
+> `chmod +x` only adds the permission. It does not turn a text file into a working script.
+
+### 🩺 "Permission denied" troubleshooting flow
+
+```text
+ls -l file  ➜  whoami  ➜  chmod u+x file (if authorized)  ➜  run again
+```
+
+If it still fails, check the directory permissions, ownership, script interpreter and other security restrictions.
+
+<details>
+<summary>🎤 <b>Interview Q&A (click to expand)</b></summary>
+
+<br>
+
+**Q: What is the difference between r, w and x?**
+`r` lets you read a file, `w` lets you modify it, and `x` lets you run it. On directories, `r` lists contents, `w` creates/deletes entries, and `x` allows entering the directory.
+
+**Q: What does `chmod 644 file.txt` do?**
+The owner gets read and write, while the group and others get read only.
+
+**Q: An application gets "Permission denied" on a config file. What do you check first?**
+I run `ls -l` on the file to see its permissions and owner, check which user the application runs as, and then check directory permissions before changing anything.
+
+</details>
 
 ---
 
