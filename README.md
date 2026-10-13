@@ -135,6 +135,7 @@ Check the logs with `grep` and `tail`, then verify the service, network, DNS, po
 |---|---|---|
 | 🙋 `whoami` | `whoami` | Shows the user running your current shell |
 | 🔎 `ls -l` | `ls -l file.txt` | Shows permissions, owner and group of a file |
+| 🔓 `chmod` | `chmod` | changes a file's permissions |
 | 🔓 `chmod +x` | `chmod +x file` | Adds execute permission |
 | 👤 `chmod u+x` | `chmod u+x deploy.sh` | Adds execute permission for the owner only |
 | 🔢 `chmod 644` | `chmod 644 file` | Owner: read+write, group and others: read only |
