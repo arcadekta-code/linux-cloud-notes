@@ -71,6 +71,21 @@
 
 > [!WARNING]
 > Linux has no recycle bin. Once you run `rm`, the file is gone. Double-check before deleting!
+>
+> **Absolute vs Relative paths**
+
+| Type | Example | Meaning |
+|---|---|---|
+| Relative | `cd ../logs` | Path described from where you are now |
+| Absolute | `cd /home/<your-user>/cloud-lab/logs` | Full path, always starts from `/` (root) |
+
+**🧪 Practice:** from `~/cloud-lab/linux`, go to `logs` without using `cd ~`:
+
+`cd ../logs`
+
+**Example:** `cd ~/cloud-lab` then `find . -name "*.txt"` lists every `.txt` file under `cloud-lab`.
+
+> 💡 **Tip:** Use `file` before opening an unknown file, and `stat` when you need exact size, permissions or timestamps.
 
 ---
 
