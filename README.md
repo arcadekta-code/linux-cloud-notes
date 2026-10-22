@@ -57,6 +57,12 @@
 | 🗑️ `rm` | `rm file.txt` | Deletes a file |
 | 💣 `rm -r` | `rm -r folder` | Deletes a folder and its contents |
 | 🧹 `rmdir` | `rmdir folder` | Deletes an empty folder only |
+| 🔍 `find` | `find . -name "app.log"` | Searches for a file by name, starting from the current folder |
+| 🌟 `find` (wildcard) | `find . -name "*.txt"` | Finds all files with a given extension |
+| 🏷️ `file` | `file commands.txt` | Shows what type of file it is (text, empty, executable, etc.) |
+| 📊 `stat` | `stat commands.txt` | Shows detailed metadata (size, permissions, owner, timestamps, inode) |
+| 📍 `.` | `ls .` | Means the current directory |
+| 🔀 `../folder` | `cd ../logs` | Goes up one level, then into a sibling folder |
 
 **Example:** `cp linux/commands.txt backup/` then verify with `ls backup/`
 
